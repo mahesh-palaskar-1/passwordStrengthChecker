@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Password Strength</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="external">
+    <h2>Password Strength Checker</h2>
+    <div class="inputPass">
+      <input type="password" placeholder="Type your password" id="password">
+      <div class="showPass" onclick="myFunction()"></div>
+    </div>
+    <div class="strengthCheck">
+    </div>
+  </div>
+  <script>
+    strengthCheck = document.querySelector('.strengthCheck');
+    document.addEventListener('keyup', checkPasswordStrength);
+    function checkPasswordStrength() {
+      var password = document.querySelector('#password').value;
+      // Initialize variables
+      var strength = 0;
+
+      // Check password length
+      if (password.length > 8) {
+        strength += 1;
+      }
+
+      // Check for mixed case
+      if (password.match(/[a-z]/) && password.match(/[A-Z]/)) {
+        strength += 1;
+      }
+      // Check for numbers
+      if (password.match(/\d/)) {
+        strength += 1;
+      }
+
+      // Check for special characters
+      if (password.match(/[^a-zA-Z\d]/)) {
+        strength += 1;
+      }
+
+      // Return results
+      console.log("str",strength);
+      if (strength < 2) {
+        strengthCheck.classList.add('weak');
+        strengthCheck.classList.remove('medium');
+        strengthCheck.classList.remove('strong');
+
+      } else if (strength === 2) {
+        strengthCheck.classList.add('medium');
+        strengthCheck.classList.remove('strong');
+        strengthCheck.classList.remove('weak');
+      } else {
+        strengthCheck.classList.add('strong');
+        strengthCheck.classList.remove('medium');
+        strengthCheck.classList.remove('weak');
+      }
+    }
+    let pass = document.querySelector('#password');
+    let showpassword = document.querySelector('.showPass');
+    showpassword.addEventListener('click', myFunction());
+    function myFunction() {
+      var x = pass.getAttribute('type') === 'password' ? 'text' : 'password';
+      pass.setAttribute('type', x);
+      if (x === 'password') {
+        showpassword.classList.remove('hide');
+      } else {
+        showpassword.classList.add('hide');
+      }
+    }
+  </script>
+</body>
+
+</html>

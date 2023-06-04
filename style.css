@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #222;
+}
+
+.external {
+  position: relative;
+  width: 400px;
+  padding: 30px;
+  background: #333;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid #111;
+  gap: 10px;
+  padding-bottom: 70px;
+  -webkit-box-reflect: below 1px linear-gradient(transparent, transparent, #0005);
+}
+
+.external h2 {
+  color: #666;
+  font-weight: 500;
+}
+
+.external .inputPass {
+  width: 100%;
+  position: relative;
+}
+
+.external .inputPass input {
+  position: relative;
+  width: 100%;
+  background: #222;
+  border: none;
+  outline: none;
+  padding: 10px;
+  color: #fff;
+  font-size: 1.1em;
+}
+
+.showPass {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 100%;
+  background: #333;
+  border: 6px solid #222;
+  cursor: pointer;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.showPass::before {
+  content: 'Show';
+  }
+
+.showPass.hide::before {
+content: 'Hide';
+}
+
+.external .strengthCheck {
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 3px;
+background: #222;
+}
+
+.external .strengthCheck::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+  background: #f00;
+}
+
+.strengthCheck.weak::before {
+  width: 10%;
+  background: #f00;
+  filter: drop-shadow(0 0 5px #f00) drop-shadow(0 0 10px #f00) drop-shadow(0 0 20px #f00) ;
+}
+
+.strengthCheck.medium::before {
+  width: 66.6%;
+  background: #ffa500;
+  filter: drop-shadow(0 0 5px #ffa500) drop-shadow(0 0 10px #ffa500) drop-shadow(0 0 20px #ffa500) ;
+}
+
+.strengthCheck.strong::before {
+  width: 100%;
+  background: #0f0;
+  filter: drop-shadow(0 0 5px #0f0) drop-shadow(0 0 10px #0f0) drop-shadow(0 0 20px #0f0) ;
+}
+
+.external .strengthCheck::after {
+  position: absolute;
+  top: -45px;
+  left:30px;
+  transition: 0.5s;
+  color: #fff;
+}
+
+.strengthCheck.weak::after {
+  content: 'Your Password is Weak';
+  color: #f00;
+  filter: drop-shadow(0 0 5px #f00);
+}
+
+.strengthCheck.medium::after {
+  content: 'Your Password is Medium';
+  color: #ffa500;
+  filter: drop-shadow(0 0 5px #ffa500);
+}
+
+.strengthCheck.strong::after {
+  content: 'Your Password is Strong';
+  color: #0f0;
+  filter: drop-shadow(0 0 5px #0f0);
+}
